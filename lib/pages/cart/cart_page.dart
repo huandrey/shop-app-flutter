@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_shop_app/models/cart.dart';
 import 'package:simple_shop_app/pages/cart/components/cart_item.dart';
+import 'package:simple_shop_app/shared/default_button.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -24,14 +25,25 @@ class CartPage extends StatelessWidget {
             const SizedBox(height: 24),
            
            Expanded(
-            child: ListView.builder(
+              child: value.getUserCart().isEmpty
+                  ? const Center(child: Text("Your cart is empty..."))
+                  : ListView.builder(
               itemCount: value.getUserCart().length,
               itemBuilder: (context, index) {
                 final product = value.getUserCart()[index];
                 return CartItem(product: product);
               },
             ),
-           )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Center(
+                child: DefaultButton(
+                  onTap: () => {},
+                  child: const Text('Pay Now'),
+                ),
+              ),
+            ),
           ],
         ),
       ),

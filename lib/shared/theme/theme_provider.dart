@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:simple_shop_app/shared/theme/theme.dart';
+import 'package:simple_shop_app/shared/theme/dark_theme.dart';
+import 'package:simple_shop_app/shared/theme/light_theme.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeData _themeData = ThemeData.light();
@@ -13,10 +14,10 @@ class ThemeProvider extends ChangeNotifier {
 
   void toggleTheme() {
 
-    if (_themeData == lightMode) {
-      _themeData = darkMode;
+    if (_themeData == lightTheme) {
+      _themeData = darkTheme;
     } else {
-      _themeData = lightMode;
+      _themeData = lightTheme;
     }
     notifyListeners();
   }

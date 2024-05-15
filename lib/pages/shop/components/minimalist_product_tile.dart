@@ -5,11 +5,11 @@ import 'package:simple_shop_app/models/product.dart';
 import 'package:simple_shop_app/shared/base_image.dart';
 import 'package:simple_shop_app/utils/extensions.dart';
 
-class ProductTile extends StatelessWidget {
+class MinimalistProductTile extends StatelessWidget {
   Product product;
   void Function() onAddProductToCart;
 
-  ProductTile({
+  MinimalistProductTile({
     super.key,
     required this.product,
     required this.onAddProductToCart,

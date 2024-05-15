@@ -34,14 +34,34 @@ class _CartItemState extends State<CartItem> {
         title: Text(widget.product.name),
         subtitle: Text(widget.product.price.toString()),
         trailing: IconButton(
-          icon: const Icon(Icons.delete),
-          onPressed: removeProductFromCart,
+          icon: const Icon(Icons.remove),
+          color: Theme.of(context).colorScheme.inversePrimary,
+          onPressed: () => removeProductFromCart(context, widget.product),
         ),
       ),
     );
   }
 
-  void removeProductFromCart() {
-    Provider.of<Cart>(context, listen: false).removeFromUserCart(widget.product);
+  void removeProductFromCart(BuildContext context, Product product) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: const Text(
+            'Are you sure you want to remove this item from your cart?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              context.read<Cart>().removeFromUserCart(product);
+            },
+            child: const Text('Remove'),
+          ),
+        ],
+      ),
+    );
   }
 }

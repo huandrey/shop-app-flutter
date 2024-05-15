@@ -23,7 +23,10 @@ class DrawerNavigation extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),
                 child: ListTile(
-                  leading: const Icon(Icons.home_outlined),
+                  leading: const Icon(
+                    Icons.home,
+                    color: Colors.grey,
+                  ),
                   title: const Text('Home'),
                   onTap: () {
                     Navigator.pop(context);
@@ -33,13 +36,16 @@ class DrawerNavigation extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 16.0),
                 child: ListTile(
-                  leading: const Icon(Icons.info_outline),
-                  title: const Text('About'),
+                  leading: const Icon(
+                    Icons.shopping_cart,
+                    color: Colors.grey,
+                  ),
+                  title: const Text('Cart'),
                   onTap: () {
                     Navigator.pop(context);
                   },
                 ),
-              )
+              ),
             ],
           ),
           Column(
